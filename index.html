@@ -1,118 +1,443 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Tech HUB</title>
+<title>My Tech HUB</title>
 
-    <link rel="stylesheet" href="style.css">
-</head>
+<style>
 
-<body>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-<div class="app">
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f6f6fa;
+    color:#202027;
+}
 
-    <!-- SIDEBAR -->
+button{
+    font:inherit;
+    border:0;
+    cursor:pointer;
+}
 
-    <aside class="sidebar">
+.app{
+    min-height:100vh;
+    display:flex;
+}
 
-        <div class="brand">
-            <div class="brand-icon">M</div>
+/* SIDEBAR */
 
-            <div>
-                <strong>My Tech</strong>
-                <span>HUB</span>
-            </div>
-        </div>
+.sidebar{
+    width:240px;
+    background:#fff;
+    border-right:1px solid #e9e9ef;
+    position:fixed;
+    inset:0 auto 0 0;
+    padding:25px 16px;
+    display:flex;
+    flex-direction:column;
+}
 
-        <nav class="navigation">
+.logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:5px 10px 35px;
+}
 
-            <button class="nav-button active" data-page="home">
-                <span>⌂</span>
-                <b>Ana Sayfa</b>
-            </button>
+.logo-icon{
+    width:42px;
+    height:42px;
+    border-radius:13px;
+    background:#7357e8;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-size:20px;
+}
 
-            <button class="nav-button" data-page="devices">
-                <span>▣</span>
-                <b>Cihazlar</b>
-            </button>
+.logo strong,
+.logo span{
+    display:block;
+}
 
-            <button class="nav-button" data-page="modes">
-                <span>◇</span>
-                <b>Modlar</b>
-            </button>
+.logo span{
+    color:#7357e8;
+    font-size:10px;
+    letter-spacing:2px;
+    font-weight:bold;
+}
 
-            <button class="nav-button" data-page="ai">
-                <span>✦</span>
-                <b>AI Asistan</b>
-            </button>
+.nav{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
 
-        </nav>
+.nav button{
+    width:100%;
+    background:transparent;
+    color:#858590;
+    padding:13px 15px;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    gap:13px;
+    text-align:left;
+}
 
-        <div class="sidebar-bottom">
+.nav button:hover,
+.nav button.active{
+    background:#eeeaff;
+    color:#7357e8;
+}
 
-            <button class="nav-button" data-page="settings">
-                <span>⚙</span>
-                <b>Ayarlar</b>
-            </button>
+.nav button span{
+    width:20px;
+    text-align:center;
+    font-size:18px;
+}
 
-        </div>
+.bottom{
+    margin-top:auto;
+}
 
-    </aside>
+/* MAIN */
 
+.main{
+    margin-left:240px;
+    width:calc(100% - 240px);
+    padding:0 35px 50px;
+}
 
-    <!-- MAIN -->
+/* TOP */
 
-    <main class="main">
+.top{
+    height:85px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
 
-        <!-- TOPBAR -->
+.search{
+    flex:1;
+    max-width:550px;
+    height:45px;
+    background:#fff;
+    border:1px solid #e8e8ef;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 15px;
+}
 
-        <header class="topbar">
+.search input{
+    width:100%;
+    border:0;
+    outline:0;
+    background:transparent;
+}
 
-            <div class="search-box">
+.icon-button{
+    width:43px;
+    height:43px;
+    border-radius:12px;
+    background:#fff;
+    border:1px solid #e8e8ef;
+}
 
-                <span>⌕</span>
+.profile{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:transparent;
+    text-align:left;
+}
 
-                <input
-                    id="search"
-                    type="text"
-                    placeholder="Cihaz, mod veya özellik ara..."
-                >
+.avatar{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#eeeaff;
+    color:#7357e8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
 
-            </div>
+/* PAGE */
 
-            <button class="top-button" id="notificationButton">
-                ♢
-            </button>
+.page{
+    display:none;
+}
 
-            <button class="profile-button" id="profileButton">
+.page.active{
+    display:block;
+}
 
-                <div class="avatar">
-                    M
-                </div>
+/* HERO */
 
-                <div class="profile-text">
-                    <strong>My Profile</strong>
-                    <small>Yönetici</small>
-                </div>
+.hero{
+    min-height:215px;
+    border:1px solid #e8e8ef;
+    border-radius:25px;
+    padding:35px;
+    background:linear-gradient(120deg,#fff,#f0edff);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:35px;
+}
 
-            </button>
+.eyebrow{
+    color:#7357e8;
+    font-size:11px;
+    letter-spacing:2px;
+    font-weight:bold;
+}
 
-        </header>
+.hero h1{
+    font-size:38px;
+    margin:10px 0;
+}
 
+.hero p{
+    color:#858590;
+}
 
-        <!-- ================= HOME ================= -->
+.hero-symbol{
+    width:120px;
+    height:120px;
+    border-radius:35px;
+    background:#e8e3ff;
+    color:#7357e8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:55px;
+}
 
-        <section class="page active" id="home">
+/* SECTIONS */
 
-            <div class="hero">
+.section{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:30px 0 17px;
+}
 
-                <div>
+.section h2{
+    font-size:20px;
+}
 
-                    <span class="eyebrow">
-                        MY TECH HUB
-                    </span>
+.section p{
+    color:#858590;
+    font-size:13px;
+    margin-top:5px;
+}
 
-                    <h1>
-                        Her şey kontrol
+.link{
+    background:transparent;
+    color:#7357e8;
+    font-weight:bold;
+}
+
+/* MODES */
+
+.mode-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.mode{
+    min-height:120px;
+    border-radius:19px;
+    padding:20px;
+    text-align:left;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    transition:.2s;
+}
+
+.mode:hover{
+    transform:translateY(-3px);
+}
+
+.mode-icon{
+    width:48px;
+    height:48px;
+    border-radius:15px;
+    background:rgba(255,255,255,.7);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:23px;
+}
+
+.mode strong,
+.mode small{
+    display:block;
+}
+
+.mode small{
+    color:#858590;
+    margin-top:5px;
+}
+
+.gaming{
+    background:#eeeaff;
+}
+
+.movie{
+    background:#fff0f0;
+}
+
+.sleep{
+    background:#eef4ff;
+}
+
+.new{
+    background:#fff;
+    border:2px dashed #dddde5;
+}
+
+/* DEVICES */
+
+.devices{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.card{
+    background:#fff;
+    border:1px solid #e8e8ef;
+    border-radius:20px;
+    padding:21px;
+}
+
+.device-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.device-icon{
+    width:45px;
+    height:45px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:21px;
+}
+
+.ps4{
+    background:#edf1ff;
+}
+
+.wiz{
+    background:#fff5df;
+}
+
+.govee{
+    background:#eafff1;
+}
+
+.status{
+    color:#42a765;
+    font-size:11px;
+}
+
+.card h3{
+    margin-top:17px;
+    font-size:16px;
+}
+
+.card p{
+    color:#858590;
+    font-size:12px;
+    margin-top:5px;
+}
+
+.actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-top:20px;
+}
+
+.primary{
+    background:#7357e8;
+    color:#fff;
+    padding:11px;
+    border-radius:11px;
+    font-weight:bold;
+}
+
+.secondary{
+    background:#f2f2f5;
+    color:#555;
+    padding:11px;
+    border-radius:11px;
+    font-weight:bold;
+}
+
+.power{
+    width:38px;
+    height:38px;
+    border-radius:11px;
+    background:#f3f3f6;
+}
+
+.brightness-title{
+    display:flex;
+    justify-content:space-between;
+    margin-top:20px;
+    font-size:12px;
+}
+
+.brightness-title strong{
+    color:#7357e8;
+}
+
+.range{
+    width:100%;
+    margin-top:10px;
+    accent-color:#7357e8;
+}
+
+.colors{
+    display:flex;
+    gap:9px;
+    margin-top:18px;
+}
+
+.color{
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    border:2px solid white;
+    box-shadow:0 0 0 1px #ddd;
+}
+
+.color.selected{
+    box-shadow:0 0 0 3px #7357e8;
+    transform:scale(1.12);
+}
+
+.red{background:#ff3b30}
+.blue{background:#3478f6}
+.p
