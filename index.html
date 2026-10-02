@@ -1,771 +1,148 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>My Tech Hub</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Tech HUB</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="app">
 
-    <!-- SIDEBAR -->
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
 
-    <aside class="sidebar">
+    <div class="logo">
+      <div class="logo-icon">M</div>
+      <div>
+        <strong>My Tech</strong>
+        <span>HUB</span>
+      </div>
+    </div>
 
-        <div class="logo">
-            <div class="logo-icon">✦</div>
+    <nav>
+      <button class="nav-btn active" data-page="home">
+        <span>⌂</span> Ana Sayfa
+      </button>
 
-            <div>
-                <strong>My Tech</strong>
-                <span>HUB</span>
-            </div>
+      <button class="nav-btn" data-page="devices">
+        <span>▣</span> Cihazlar
+      </button>
+
+      <button class="nav-btn" data-page="modes">
+        <span>◈</span> Modlar
+      </button>
+
+      <button class="nav-btn" data-page="ai">
+        <span>✦</span> AI Asistan
+      </button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <button class="nav-btn" data-page="settings">
+        <span>⚙</span> Ayarlar
+      </button>
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+
+      <div class="search">
+        <span>⌕</span>
+        <input id="searchInput" type="text" placeholder="Cihaz, mod veya özellik ara...">
+      </div>
+
+      <button class="icon-btn" id="notificationBtn">♢</button>
+
+      <button class="profile" id="profileBtn">
+        <div class="avatar">M</div>
+        <div>
+          <strong>My Profile</strong>
+          <small>Yönetici</small>
+        </div>
+      </button>
+
+    </header>
+
+
+    <!-- ================= HOME ================= -->
+
+    <section class="page active-page" id="page-home">
+
+      <div class="hero">
+        <div>
+          <p class="eyebrow">MY TECH HUB</p>
+          <h1>Her şey kontrolünde.</h1>
+          <p class="hero-text">
+            Cihazlarını, ışıklarını ve modlarını tek bir yerden yönet.
+          </p>
         </div>
 
-
-        <nav>
-
-            <button class="nav-item active">
-                <span>⌂</span>
-                Ana Sayfa
-            </button>
-
-            <button class="nav-item">
-                <span>◉</span>
-                Cihazlar
-            </button>
-
-            <button class="nav-item">
-                <span>⚡</span>
-                Modlar
-            </button>
-
-            <button class="nav-item">
-                <span>✦</span>
-                AI Asistan
-            </button>
-
-        </nav>
+        <div class="hero-icon">✦</div>
+      </div>
 
 
-        <div class="sidebar-bottom">
+      <!-- MODES -->
 
-            <button class="nav-item">
-                <span>⚙</span>
-                Ayarlar
-            </button>
-
-            <div class="connection-box">
-                <div class="connection-dot"></div>
-
-                <div>
-                    <strong>Sistem hazır</strong>
-                    <small>3 cihaz bulundu</small>
-                </div>
-            </div>
-
+      <div class="section-header">
+        <div>
+          <h2>Hızlı Modlar</h2>
+          <p>Tek dokunuşla ortamını değiştir.</p>
         </div>
 
-    </aside>
-
-
-    <!-- MAIN -->
-
-    <main class="main">
-
-        <!-- TOP -->
-
-        <header class="topbar">
-
-            <div class="mobile-logo">
-                ✦ My Tech Hub
-            </div>
-
-            <div class="search">
-                <span>⌕</span>
-                <input
-                    type="text"
-                    placeholder="Cihaz veya özellik ara..."
-                >
-            </div>
-
-            <div class="top-actions">
-
-                <button class="icon-button">
-                    ♧
-                </button>
-
-                <button class="profile">
-                    <div class="avatar">E</div>
-
-                    <div>
-                        <strong>Kontrol Merkezi</strong>
-                        <small>Kişisel kullanım</small>
-                    </div>
-                </button>
-
-            </div>
-
-        </header>
-
-
-        <!-- CONTENT -->
-
-        <div class="content">
-
-
-            <!-- HERO -->
-
-            <section class="hero">
-
-                <div class="hero-text">
-
-                    <span class="overline">
-                        KONTROL MERKEZİ
-                    </span>
-
-                    <h1>
-                        Her şey kontrolünde.
-                    </h1>
-
-                    <p>
-                        Cihazlarını tek bir yerden yönet,
-                        modlarını değiştir ve AI asistanından yardım al.
-                    </p>
-
-                    <div class="hero-actions">
-
-                        <button class="primary-button">
-                            <span>+</span>
-                            Cihaz Ekle
-                        </button>
-
-                        <button class="secondary-button">
-                            Tüm cihazlar
-                            <span>→</span>
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <div class="hero-visual">
-
-                    <div class="orb orb-1"></div>
-                    <div class="orb orb-2"></div>
-
-                    <div class="hub-circle">
-
-                        <div class="hub-center">
-                            <span>✦</span>
-                        </div>
-
-                        <div class="orbit orbit-1">
-                            🎮
-                        </div>
-
-                        <div class="orbit orbit-2">
-                            💡
-                        </div>
-
-                        <div class="orbit orbit-3">
-                            🌈
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- QUICK MODES -->
-
-            <section class="section">
-
-                <div class="section-header">
-
-                    <div>
-                        <span class="overline">
-                            HIZLI KONTROLLER
-                        </span>
-
-                        <h2>Modlar</h2>
-                    </div>
-
-                    <button class="text-button">
-                        Tümünü gör →
-                    </button>
-
-                </div>
-
-
-                <div class="modes">
-
-
-                    <button class="mode-card gaming">
-
-                        <div class="mode-icon">
-                            🎮
-                        </div>
-
-                        <div>
-                            <strong>Gaming</strong>
-                            <span>Oyun zamanı</span>
-                        </div>
-
-                        <div class="mode-arrow">
-                            →
-                        </div>
-
-                    </button>
-
-
-                    <button class="mode-card movie">
-
-                        <div class="mode-icon">
-                            🍿
-                        </div>
-
-                        <div>
-                            <strong>Film</strong>
-                            <span>Film zamanı</span>
-                        </div>
-
-                        <div class="mode-arrow">
-                            →
-                        </div>
-
-                    </button>
-
-
-                    <button class="mode-card sleep">
-
-                        <div class="mode-icon">
-                            ◐
-                        </div>
-
-                        <div>
-                            <strong>Uyku</strong>
-                            <span>Her şeyi kapat</span>
-                        </div>
-
-                        <div class="mode-arrow">
-                            →
-                        </div>
-
-                    </button>
-
-
-                    <button class="mode-card custom">
-
-                        <div class="mode-icon">
-                            +
-                        </div>
-
-                        <div>
-                            <strong>Yeni Mod</strong>
-                            <span>Kendin oluştur</span>
-                        </div>
-
-                        <div class="mode-arrow">
-                            →
-                        </div>
-
-                    </button>
-
-                </div>
-
-            </section>
-
-
-            <!-- DEVICES -->
-
-            <section class="section">
-
-                <div class="section-header">
-
-                    <div>
-
-                        <span class="overline">
-                            CİHAZLARIN
-                        </span>
-
-                        <h2>Kontrol paneli</h2>
-
-                    </div>
-
-                    <span class="device-count">
-                        3 cihaz
-                    </span>
-
-                </div>
-
-
-                <div class="devices">
-
-
-                    <!-- PS4 -->
-
-                    <article class="device-card ps4-card">
-
-                        <div class="device-top">
-
-                            <div class="device-brand">
-                                PLAYSTATION
-                            </div>
-
-                            <div class="online">
-                                <i></i>
-                                Demo
-                            </div>
-
-                        </div>
-
-
-                        <div class="device-main">
-
-                            <div class="device-icon ps4-icon">
-                                🎮
-                            </div>
-
-                            <div>
-
-                                <h3>PlayStation 4</h3>
-
-                                <p>
-                                    Oyun konsolu
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="device-state">
-
-                            <strong>Beklemede</strong>
-
-                            <span>
-                                Bağlantı henüz kurulmadı
-                            </span>
-
-                        </div>
-
-
-                        <div class="device-controls">
-
-                            <button class="control-primary">
-                                ⏻
-                                Aç / Uyandır
-                            </button>
-
-                            <button class="control-secondary">
-                                ◐
-                                Dinlenme
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- WIZ -->
-
-                    <article class="device-card">
-
-                        <div class="device-top">
-
-                            <div class="device-brand">
-                                WIZ LIGHTING
-                            </div>
-
-                            <div class="online">
-                                <i></i>
-                                Demo
-                            </div>
-
-                        </div>
-
-
-                        <div class="device-main">
-
-                            <div class="device-icon wiz-icon">
-                                💡
-                            </div>
-
-                            <div>
-
-                                <h3>WiZ Lamba</h3>
-
-                                <p>
-                                    Akıllı aydınlatma
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="light-control">
-
-                            <button class="light-power">
-                                ⏻
-                            </button>
-
-                            <div class="brightness">
-
-                                <div>
-                                    <span>Parlaklık</span>
-                                    <strong id="wizValue">
-                                        70%
-                                    </strong>
-                                </div>
-
-                                <input
-                                    id="wizBrightness"
-                                    type="range"
-                                    min="0"
-                                    max="100"
-                                    value="70"
-                                >
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="color-row">
-
-                            <span>Renk</span>
-
-                            <div class="color-options">
-
-                                <button
-                                    class="color-dot yellow">
-                                </button>
-
-                                <button
-                                    class="color-dot blue">
-                                </button>
-
-                                <button
-                                    class="color-dot purple">
-                                </button>
-
-                                <button
-                                    class="color-dot white">
-                                </button>
-
-                                <button class="color-more">
-                                    +
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- GOVEE -->
-
-                    <article class="device-card">
-
-                        <div class="device-top">
-
-                            <div class="device-brand">
-                                GOVEE
-                            </div>
-
-                            <div class="online">
-                                <i></i>
-                                Demo
-                            </div>
-
-                        </div>
-
-
-                        <div class="device-main">
-
-                            <div class="device-icon govee-icon">
-                                🌈
-                            </div>
-
-                            <div>
-
-                                <h3>Govee Şerit</h3>
-
-                                <p>
-                                    Ambiyans ışığı
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="light-control">
-
-                            <button class="light-power">
-                                ⏻
-                            </button>
-
-                            <div class="brightness">
-
-                                <div>
-
-                                    <span>Parlaklık</span>
-
-                                    <strong id="goveeValue">
-                                        70%
-                                    </strong>
-
-                                </div>
-
-                                <input
-                                    id="goveeBrightness"
-                                    type="range"
-                                    min="0"
-                                    max="100"
-                                    value="70"
-                                >
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="color-row">
-
-                            <span>Renk</span>
-
-                            <div class="color-options">
-
-                                <button
-                                    class="color-dot cyan">
-                                </button>
-
-                                <button
-                                    class="color-dot purple">
-                                </button>
-
-                                <button
-                                    class="color-dot pink">
-                                </button>
-
-                                <button
-                                    class="color-dot white">
-                                </button>
-
-                                <button class="color-more">
-                                    +
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </section>
-
-
-            <!-- AI -->
-
-            <section class="ai-panel">
-
-                <div class="ai-info">
-
-                    <div class="ai-logo">
-                        ✦
-                    </div>
-
-                    <span class="overline">
-                        MY TECH AI
-                    </span>
-
-                    <h2>
-                        Kontrol etmek
-                        <br>
-                        <em>daha kolay.</em>
-                    </h2>
-
-                    <p>
-                        Cihazlarını yönetmek,
-                        mod oluşturmak veya bir şey sormak için
-                        AI asistanını kullan.
-                    </p>
-
-                    <div class="ai-status">
-                        <i></i>
-                        AI bağlantısı hazırlanıyor
-                    </div>
-
-                </div>
-
-
-                <div class="chat">
-
-                    <div class="chat-header">
-
-                        <div class="ai-avatar">
-                            ✦
-                        </div>
-
-                        <div>
-                            <strong>My Tech AI</strong>
-                            <span>Asistan</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="messages" id="messages">
-
-                        <div class="message ai">
-                            Merhaba 👋<br>
-                            Bugün cihazlarında ne yapmak istiyorsun?
-                        </div>
-
-                    </div>
-
-
-                    <div class="chat-input">
-
-                        <input
-                            id="messageInput"
-                            type="text"
-                            placeholder="Bir şey sor..."
-                        >
-
-                        <button id="sendButton">
-                            ↑
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <footer>
-                My Tech Hub · Kişisel teknoloji merkezi
-            </footer>
-
-        </div>
-
-    </main>
-
-</div>
-
-
-<script>
-
-const wizSlider =
-document.getElementById("wizBrightness");
-
-const wizValue =
-document.getElementById("wizValue");
-
-wizSlider.addEventListener("input", () => {
-    wizValue.textContent =
-        wizSlider.value + "%";
-});
-
-
-const goveeSlider =
-document.getElementById("goveeBrightness");
-
-const goveeValue =
-document.getElementById("goveeValue");
-
-goveeSlider.addEventListener("input", () => {
-    goveeValue.textContent =
-        goveeSlider.value + "%";
-});
-
-
-const sendButton =
-document.getElementById("sendButton");
-
-const messageInput =
-document.getElementById("messageInput");
-
-const messages =
-document.getElementById("messages");
-
-
-function sendMessage(){
-
-    const text =
-        messageInput.value.trim();
-
-    if(!text) return;
-
-
-    const userMessage =
-        document.createElement("div");
-
-    userMessage.className =
-        "message user";
-
-    userMessage.textContent =
-        text;
-
-    messages.appendChild(userMessage);
-
-
-    messageInput.value = "";
-
-
-    setTimeout(() => {
-
-        const aiMessage =
-            document.createElement("div");
-
-        aiMessage.className =
-            "message ai";
-
-        aiMessage.textContent =
-            "Şimdilik demo modundayım. Gerçek AI bağlantısı sonraki aşamada eklenecek.";
-
-        messages.appendChild(aiMessage);
-
-        messages.scrollTop =
-            messages.scrollHeight;
-
-    }, 500);
-
-}
-
-
-sendButton.addEventListener(
-    "click",
-    sendMessage
-);
-
-
-messageInput.addEventListener(
-    "keydown",
-    event => {
-
-        if(event.key === "Enter"){
-            sendMessage();
-        }
-
-    }
-);
-
-</script>
-
-</body>
-  </html>
+        <button class="text-btn" data-page="modes">
+          Tümünü gör →
+        </button>
+      </div>
+
+      <div class="mode-grid">
+
+        <button class="mode-card gaming" data-mode="gaming">
+          <div class="mode-icon">🎮</div>
+          <div>
+            <strong>Gaming</strong>
+            <span>Oyun zamanı</span>
+          </div>
+        </button>
+
+        <button class="mode-card movie" data-mode="movie">
+          <div class="mode-icon">🎬</div>
+          <div>
+            <strong>Film</strong>
+            <span>Sinema atmosferi</span>
+          </div>
+        </button>
+
+        <button class="mode-card sleep" data-mode="sleep">
+          <div class="mode-icon">🌙</div>
+          <div>
+            <strong>Uyku</strong>
+            <span>Gece modu</span>
+          </div>
+        </button>
+
+        <button class="mode-card new-mode" id="newModeBtn">
+          <div class="mode-icon">＋</div>
+          <div>
+            <strong>Yeni Mod</strong>
+            <span>Mod oluştur</span>
+          </div>
+        </button>
+
+      </div>
+
+
+      <!-- DEVICES -->
+
+      <div class="section-header">
+        <div>
+          <h2>Cihazların</h2>
+          <p>Ba
