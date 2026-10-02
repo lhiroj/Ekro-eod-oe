@@ -1,600 +1,755 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const pages = document.querySelectorAll(".page");
-  const navButtons = document.querySelectorAll(".nav-btn");
-
-  const modal = document.getElementById("modal");
-  const modalBody = document.getElementById("modalBody");
-  const closeModal = document.getElementById("closeModal");
-
-  const toast = document.getElementById("toast");
-  const toastText = document.getElementById("toastText");
+    console.log("My Tech HUB çalışıyor");
 
 
-  /* =========================
-     SAYFA DEĞİŞTİRME
-  ========================= */
+    /* =========================
+       SAYFA SİSTEMİ
+    ========================= */
 
-  function showPage(pageName) {
-
-    pages.forEach(page => {
-      page.classList.remove("active-page");
-    });
-
-    const selectedPage =
-      document.getElementById("page-" + pageName);
-
-    if (selectedPage) {
-      selectedPage.classList.add("active-page");
-    }
-
-    navButtons.forEach(button => {
-      button.classList.remove("active");
-
-      if (button.dataset.page === pageName) {
-        button.classList.add("active");
-      }
-    });
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  }
+    const pages = document.querySelectorAll(".page");
+    const navButtons = document.querySelectorAll(".nav-button");
 
 
-  document.querySelectorAll("[data-page]").forEach(button => {
+    function openPage(pageName) {
 
-    button.addEventListener("click", () => {
+        pages.forEach(page => {
+            page.classList.remove("active");
+        });
 
-      const page = button.dataset.page;
+        const target = document.getElementById(pageName);
 
-      if (page) {
-        showPage(page);
-      }
+        if (target) {
+            target.classList.add("active");
+        }
 
-    });
+        navButtons.forEach(button => {
 
-  });
+            button.classList.remove("active");
 
-
-
-  /* =========================
-     TOAST
-  ========================= */
-
-  function showToast(message) {
-
-    toastText.textContent = message;
-
-    toast.classList.add("show");
-
-    setTimeout(() => {
-      toast.classList.remove("show");
-    }, 2500);
-
-  }
-
-
-
-  /* =========================
-     MODAL
-  ========================= */
-
-  function openModal(content) {
-
-    modalBody.innerHTML = content;
-
-    modal.classList.add("show");
-
-  }
-
-
-  function closeModalFunction() {
-
-    modal.classList.remove("show");
-
-  }
-
-
-  closeModal.addEventListener(
-    "click",
-    closeModalFunction
-  );
-
-
-  modal.addEventListener("click", event => {
-
-    if (event.target === modal) {
-      closeModalFunction();
-    }
-
-  });
-
-
-
-  /* =========================
-     CİHAZ EKLE
-  ========================= */
-
-  function openDeviceModal() {
-
-    openModal(`
-
-      <div class="modal-icon">＋</div>
-
-      <h2>Cihaz Ekle</h2>
-
-      <p>Bağlamak istediğin cihazı seç.</p>
-
-      <div class="modal-options">
-
-        <button class="modal-option" data-add-device="ps4">
-          🎮
-          <strong>PlayStation 4</strong>
-          <span>Oyun konsolu</span>
-        </button>
-
-        <button class="modal-option" data-add-device="wiz">
-          💡
-          <strong>WiZ</strong>
-          <span>Akıllı ışık</span>
-        </button>
-
-        <button class="modal-option" data-add-device="govee">
-          ◉
-          <strong>Govee</strong>
-          <span>LED ışık</span>
-        </button>
-
-      </div>
-
-    `);
-
-
-    document.querySelectorAll("[data-add-device]")
-      .forEach(button => {
-
-        button.addEventListener("click", () => {
-
-          const device = button.dataset.addDevice;
-
-          showToast(
-            device.toUpperCase() +
-            " cihaz ekleme ekranı açıldı."
-          );
-
-          closeModalFunction();
+            if (button.dataset.page === pageName) {
+                button.classList.add("active");
+            }
 
         });
 
-      });
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
 
-  }
 
+    document.querySelectorAll("[data-page]")
+        .forEach(button => {
 
-  document
-    .getElementById("addDeviceBtn")
-    .addEventListener("click", openDeviceModal);
+            button.addEventListener("click", event => {
 
+                event.preventDefault();
 
-  document
-    .getElementById("addDeviceBtn2")
-    .addEventListener("click", openDeviceModal);
+                openPage(button.dataset.page);
 
+            });
 
+        });
 
-  /* =========================
-     YENİ MOD
-  ========================= */
 
-  function openNewModeModal() {
+    /* =========================
+       TOAST
+    ========================= */
 
-    openModal(`
+    const toast = document.getElementById("toast");
+    const toastText = document.getElementById("toastText");
 
-      <div class="modal-icon">✦</div>
 
-      <h2>Yeni Mod Oluştur</h2>
+    function showToast(text) {
 
-      <p>Kendi cihaz kombinasyonunu oluştur.</p>
+        toastText.textContent = text;
 
-      <input
-        id="newModeName"
-        class="modal-input"
-        placeholder="Mod adı"
-      >
+        toast.classList.add("show");
 
-      <button id="createModeConfirm"
-              class="primary-btn full-btn">
-        Modu Oluştur
-      </button>
+        clearTimeout(window.toastTimer);
 
-    `);
+        window.toastTimer = setTimeout(() => {
 
+            toast.classList.remove("show");
 
-    document
-      .getElementById("createModeConfirm")
-      .addEventListener("click", () => {
+        }, 2300);
 
-        const name =
-          document.getElementById("newModeName").value.trim();
+    }
 
-        if (!name) {
 
-          showToast("Önce bir mod adı yaz.");
+    /* =========================
+       MODAL
+    ========================= */
 
-          return;
-        }
+    const modal = document.getElementById("modal");
+    const modalContent =
+        document.getElementById("modalContent");
 
-        closeModalFunction();
+    const modalClose =
+        document.getElementById("modalClose");
 
-        showToast(
-          `"${name}" modu oluşturuldu.`
-        );
 
-      });
+    function openModal(html) {
 
-  }
+        modalContent.innerHTML = html;
 
+        modal.classList.add("show");
 
-  document
-    .getElementById("newModeBtn")
-    .addEventListener("click", openNewModeModal);
+    }
 
 
-  document
-    .getElementById("newModeBtn2")
-    .addEventListener("click", openNewModeModal);
+    function closeModal() {
 
+        modal.classList.remove("show");
 
+    }
 
-  /* =========================
-     MODLAR
-  ========================= */
 
-  document.querySelectorAll("[data-mode]")
-    .forEach(button => {
-
-      button.addEventListener("click", () => {
-
-        const mode = button.dataset.mode;
-
-        const names = {
-          gaming: "Gaming",
-          movie: "Film",
-          sleep: "Uyku"
-        };
-
-        showToast(
-          names[mode] +
-          " modu başlatılıyor..."
-        );
-
-      });
-
-    });
-
-
-
-  /* =========================
-     CİHAZ KOMUTLARI
-  ========================= */
-
-  document.querySelectorAll(".device-action")
-    .forEach(button => {
-
-      button.addEventListener("click", () => {
-
-        const device = button.dataset.device;
-        const action = button.dataset.action;
-
-        let message = "";
-
-        if (device === "ps4") {
-
-          if (action === "wake") {
-            message = "PS4 uyandırma komutu hazırlanıyor...";
-          }
-
-          if (action === "rest") {
-            message = "PS4 dinlenme komutu hazırlanıyor...";
-          }
-
-        }
-
-        if (device === "wiz") {
-          message = "WiZ ışık komutu hazırlanıyor...";
-        }
-
-        if (device === "govee") {
-          message = "Govee ışık komutu hazırlanıyor...";
-        }
-
-        showToast(message);
-
-      });
-
-    });
-
-
-
-  /* =========================
-     RENKLER
-  ========================= */
-
-  document.querySelectorAll(".device-color")
-    .forEach(button => {
-
-      button.addEventListener("click", () => {
-
-        const device = button.dataset.device;
-        const color = button.dataset.color;
-
-        document
-          .querySelectorAll(
-            `.device-color[data-device="${device}"]`
-          )
-          .forEach(item => {
-            item.classList.remove("selected");
-          });
-
-        button.classList.add("selected");
-
-        showToast(
-          `${device.toUpperCase()} renk: ${color}`
-        );
-
-      });
-
-    });
-
-
-
-  /* =========================
-     PARLAKLIK
-  ========================= */
-
-  const wizBrightness =
-    document.getElementById("wizBrightness");
-
-  const wizBrightnessValue =
-    document.getElementById("wizBrightnessValue");
-
-
-  wizBrightness.addEventListener("input", () => {
-
-    wizBrightnessValue.textContent =
-      wizBrightness.value + "%";
-
-  });
-
-
-
-  const goveeBrightness =
-    document.getElementById("goveeBrightness");
-
-  const goveeBrightnessValue =
-    document.getElementById("goveeBrightnessValue");
-
-
-  goveeBrightness.addEventListener("input", () => {
-
-    goveeBrightnessValue.textContent =
-      goveeBrightness.value + "%";
-
-  });
-
-
-
-  /* =========================
-     AI
-  ========================= */
-
-  const aiInput =
-    document.getElementById("aiInput");
-
-  const sendAiBtn =
-    document.getElementById("sendAiBtn");
-
-  const chatMessages =
-    document.getElementById("chatMessages");
-
-
-  function sendAIMessage() {
-
-    const message =
-      aiInput.value.trim();
-
-    if (!message) return;
-
-
-    const userMessage =
-      document.createElement("div");
-
-    userMessage.className =
-      "chat-message user-message";
-
-    userMessage.textContent =
-      message;
-
-    chatMessages.appendChild(
-      userMessage
+    modalClose.addEventListener(
+        "click",
+        closeModal
     );
 
 
-    aiInput.value = "";
+    modal.addEventListener(
+        "click",
+        event => {
+
+            if (event.target === modal) {
+                closeModal();
+            }
+
+        }
+    );
 
 
-    setTimeout(() => {
+    /* =========================
+       MODLAR
+    ========================= */
 
-      const aiMessage =
-        document.createElement("div");
+    document.querySelectorAll("[data-mode]")
+        .forEach(button => {
 
-      aiMessage.className =
-        "chat-message ai-response";
+            button.addEventListener("click", () => {
 
-      aiMessage.textContent =
-        "AI bağlantısı henüz API'ye bağlanmadı. Arayüz hazır.";
+                const mode = button.dataset.mode;
 
-      chatMessages.appendChild(
-        aiMessage
-      );
+                const names = {
+                    gaming: "Gaming",
+                    movie: "Film",
+                    sleep: "Uyku"
+                };
 
-    }, 500);
+                showToast(
+                    names[mode] +
+                    " modu seçildi."
+                );
 
-  }
+            });
+
+        });
 
 
-  sendAiBtn.addEventListener(
-    "click",
-    sendAIMessage
-  );
+    /* =========================
+       YENİ MOD
+    ========================= */
+
+    function newMode() {
+
+        openModal(`
+
+            <h2>Yeni Mod</h2>
+
+            <p>
+                Kendi modunun adını belirle.
+            </p>
+
+            <input
+                id="modeName"
+                type="text"
+                placeholder="Örn. Ders"
+                style="
+                    width:100%;
+                    margin-top:18px;
+                    padding:13px;
+                    border:1px solid #ddd;
+                    border-radius:12px;
+                    outline:none;
+                "
+            >
+
+            <button
+                id="saveMode"
+                class="primary-button"
+                style="
+                    width:100%;
+                    margin-top:12px;
+                ">
+
+                Modu Oluştur
+
+            </button>
+
+        `);
 
 
-  aiInput.addEventListener(
-    "keydown",
-    event => {
+        document
+            .getElementById("saveMode")
+            .addEventListener("click", () => {
 
-      if (event.key === "Enter") {
-        sendAIMessage();
-      }
+                const name =
+                    document
+                        .getElementById("modeName")
+                        .value
+                        .trim();
+
+                if (!name) {
+
+                    showToast(
+                        "Önce bir mod adı yaz."
+                    );
+
+                    return;
+                }
+
+                closeModal();
+
+                showToast(
+                    `"${name}" modu oluşturuldu.`
+                );
+
+            });
 
     }
-  );
 
 
-
-  /* =========================
-     BİLDİRİM
-  ========================= */
-
-  document
-    .getElementById("notificationBtn")
-    .addEventListener("click", () => {
-
-      openModal(`
-
-        <div class="modal-icon">♢</div>
-
-        <h2>Bildirimler</h2>
-
-        <p>
-          Şu anda yeni bir bildirimin yok.
-        </p>
-
-      `);
-
-    });
-
-
-
-  /* =========================
-     PROFİL
-  ========================= */
-
-  document
-    .getElementById("profileBtn")
-    .addEventListener("click", () => {
-
-      openModal(`
-
-        <div class="avatar large-avatar">M</div>
-
-        <h2>My Profile</h2>
-
-        <p>Yönetici hesabı</p>
-
-        <button
-          class="secondary-btn full-btn"
-          id="profileClose">
-          Kapat
-        </button>
-
-      `);
-
-      document
-        .getElementById("profileClose")
+    document
+        .getElementById("newMode")
         .addEventListener(
-          "click",
-          closeModalFunction
+            "click",
+            newMode
         );
 
-    });
 
-
-
-  /* =========================
-     ARAMA
-  ========================= */
-
-  document
-    .getElementById("searchInput")
-    .addEventListener("keydown", event => {
-
-      if (event.key !== "Enter") return;
-
-      const query =
-        event.target.value.trim().toLowerCase();
-
-      if (!query) return;
-
-      if (query.includes("ps4")) {
-        showPage("devices");
-      }
-
-      else if (
-        query.includes("wiz") ||
-        query.includes("ışık")
-      ) {
-        showPage("devices");
-      }
-
-      else if (
-        query.includes("govee")
-      ) {
-        showPage("devices");
-      }
-
-      else if (
-        query.includes("mod")
-      ) {
-        showPage("modes");
-      }
-
-      else if (
-        query.includes("ai")
-      ) {
-        showPage("ai");
-      }
-
-      else {
-        showToast(
-          `"${query}" için sonuç bulunamadı.`
+    document
+        .getElementById("newMode2")
+        .addEventListener(
+            "click",
+            newMode
         );
-      }
-
-    });
 
 
+    /* =========================
+       CİHAZ EKLE
+    ========================= */
 
-  /* =========================
-     DARK MODE
-  ========================= */
+    function addDevice() {
 
-  const darkModeSwitch =
-    document.getElementById("darkModeSwitch");
+        openModal(`
+
+            <h2>Cihaz Ekle</h2>
+
+            <p>
+                Bağlamak istediğin cihazı seç.
+            </p>
+
+            <button
+                class="modal-option"
+                data-add="PS4">
+
+                🎮
+
+                <strong>
+                    PlayStation 4
+                </strong>
+
+                <span>
+                    Oyun konsolu
+                </span>
+
+            </button>
 
 
-  darkModeSwitch.addEventListener(
-    "change",
-    () => {
+            <button
+                class="modal-option"
+                data-add="WiZ">
 
-      document.body.classList.toggle(
-        "dark",
-        darkModeSwitch.checked
-      );
+                💡
+
+                <strong>
+                    WiZ
+                </strong>
+
+                <span>
+                    Akıllı ışık
+                </span>
+
+            </button>
+
+
+            <button
+                class="modal-option"
+                data-add="Govee">
+
+                ◉
+
+                <strong>
+                    Govee
+                </strong>
+
+                <span>
+                    LED ışık
+                </span>
+
+            </button>
+
+        `);
+
+
+        document
+            .querySelectorAll("[data-add]")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        const device =
+                            button.dataset.add;
+
+                        closeModal();
+
+                        showToast(
+                            device +
+                            " seçildi."
+                        );
+
+                    }
+                );
+
+            });
 
     }
-  );
+
+
+    document
+        .getElementById("addDevice")
+        .addEventListener(
+            "click",
+            addDevice
+        );
+
+
+    document
+        .getElementById("addDevice2")
+        .addEventListener(
+            "click",
+            addDevice
+        );
+
+
+    /* =========================
+       CİHAZ BUTONLARI
+    ========================= */
+
+    document
+        .querySelectorAll("[data-device]")
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                event => {
+
+                    event.preventDefault();
+
+                    const device =
+                        button.dataset.device;
+
+                    const action =
+                        button.dataset.action;
+
+
+                    if (
+                        device === "ps4" &&
+                        action === "wake"
+                    ) {
+
+                        showToast(
+                            "PS4 uyandırma komutu hazır."
+                        );
+
+                    }
+
+
+                    else if (
+                        device === "ps4" &&
+                        action === "rest"
+                    ) {
+
+                        showToast(
+                            "PS4 dinlenme komutu hazır."
+                        );
+
+                    }
+
+
+                    else if (
+                        action === "power"
+                    ) {
+
+                        showToast(
+                            device.toUpperCase() +
+                            " güç komutu hazır."
+                        );
+
+                    }
+
+                }
+            );
+
+        });
+
+
+    /* =========================
+       RENK SEÇİMİ
+    ========================= */
+
+    document
+        .querySelectorAll(".color-button")
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                event => {
+
+                    event.preventDefault();
+
+                    const device =
+                        button.dataset.device;
+
+                    const color =
+                        button.dataset.color;
+
+
+                    document
+                        .querySelectorAll(
+                            `.color-button[data-device="${device}"]`
+                        )
+                        .forEach(item => {
+
+                            item.classList.remove(
+                                "selected"
+                            );
+
+                        });
+
+
+                    button.classList.add(
+                        "selected"
+                    );
+
+
+                    showToast(
+                        device.toUpperCase() +
+                        " renk seçildi."
+                    );
+
+                    console.log(
+                        device,
+                        color
+                    );
+
+                }
+            );
+
+        });
+
+
+    /* =========================
+       WIZ PARLAKLIK
+    ========================= */
+
+    const wizBrightness =
+        document.getElementById(
+            "wizBrightness"
+        );
+
+    const wizValue =
+        document.getElementById(
+            "wizValue"
+        );
+
+
+    wizBrightness.addEventListener(
+        "input",
+        () => {
+
+            wizValue.textContent =
+                wizBrightness.value + "%";
+
+        }
+    );
+
+
+    /* =========================
+       GOVEE PARLAKLIK
+    ========================= */
+
+    const goveeBrightness =
+        document.getElementById(
+            "goveeBrightness"
+        );
+
+    const goveeValue =
+        document.getElementById(
+            "goveeValue"
+        );
+
+
+    goveeBrightness.addEventListener(
+        "input",
+        () => {
+
+            goveeValue.textContent =
+                goveeBrightness.value + "%";
+
+        }
+    );
+
+
+    /* =========================
+       AI
+    ========================= */
+
+    const aiInput =
+        document.getElementById(
+            "aiInput"
+        );
+
+    const sendAI =
+        document.getElementById(
+            "sendAI"
+        );
+
+    const messages =
+        document.getElementById(
+            "messages"
+        );
+
+
+    function sendMessage() {
+
+        const text =
+            aiInput.value.trim();
+
+
+        if (!text) {
+            return;
+        }
+
+
+        const user =
+            document.createElement("div");
+
+        user.className =
+            "message user-message";
+
+        user.textContent =
+            text;
+
+        messages.appendChild(user);
+
+
+        aiInput.value = "";
+
+
+        setTimeout(() => {
+
+            const answer =
+                document.createElement("div");
+
+            answer.className =
+                "message ai-message";
+
+            answer.textContent =
+                "AI bağlantısı sonraki aşamada API'ye bağlanacak.";
+
+            messages.appendChild(answer);
+
+        }, 400);
+
+    }
+
+
+    sendAI.addEventListener(
+        "click",
+        sendMessage
+    );
+
+
+    aiInput.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+
+        }
+    );
+
+
+    /* =========================
+       BİLDİRİMLER
+    ========================= */
+
+    document
+        .getElementById(
+            "notificationButton"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                openModal(`
+
+                    <h2>Bildirimler</h2>
+
+                    <p style="margin-top:10px;">
+                        Şu anda yeni bildirimin yok.
+                    </p>
+
+                `);
+
+            }
+        );
+
+
+    /* =========================
+       PROFİL
+    ========================= */
+
+    document
+        .getElementById(
+            "profileButton"
+        )
+        .addEventListener(
+            "click",
+            () => {
+
+                openModal(`
+
+                    <h2>My Profile</h2>
+
+                    <p style="margin-top:10px;">
+                        Yönetici hesabı
+                    </p>
+
+                `);
+
+            }
+        );
+
+
+    /* =========================
+       ARAMA
+    ========================= */
+
+    document
+        .getElementById("search")
+        .addEventListener(
+            "keydown",
+            event => {
+
+                if (event.key !== "Enter") {
+                    return;
+                }
+
+
+                const query =
+                    event.target.value
+                        .trim()
+                        .toLowerCase();
+
+
+                if (!query) {
+                    return;
+                }
+
+
+                if (
+                    query.includes("ps4") ||
+                    query.includes("playstation")
+                ) {
+
+                    openPage("devices");
+
+                }
+
+                else if (
+                    query.includes("wiz") ||
+                    query.includes("ışık")
+                ) {
+
+                    openPage("devices");
+
+                }
+
+                else if (
+                    query.includes("govee")
+                ) {
+
+                    openPage("devices");
+
+                }
+
+                else if (
+                    query.includes("mod")
+                ) {
+
+                    openPage("modes");
+
+                }
+
+                else if (
+                    query.includes("ai")
+                ) {
+
+                    openPage("ai");
+
+                }
+
+                else {
+
+                    showToast(
+                        "Sonuç bulunamadı."
+                    );
+
+                }
+
+            }
+        );
+
+
+    /* =========================
+       DARK MODE
+    ========================= */
+
+    document
+        .getElementById("darkMode")
+        .addEventListener(
+            "change",
+            event => {
+
+                document.body.classList.toggle(
+                    "dark",
+                    event.target.checked
+                );
+
+            }
+        );
+
 
 });
