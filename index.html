@@ -440,4 +440,1854 @@ button{
 
 .red{background:#ff3b30}
 .blue{background:#3478f6}
-.p
+.purple{background:#af52de}
+.green{background:#34c759}
+.white{background:#fff}
+
+.add{
+    min-height:250px;
+    border-radius:20px;
+    background:#fff;
+    border:2px dashed #dddde5;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+}
+
+.add:hover{
+    border-color:#7357e8;
+    color:#7357e8;
+}
+
+.add span{
+    color:#858590;
+    font-size:12px;
+}
+
+/* OTHER PAGES */
+
+.heading{
+    padding:25px 0 30px;
+}
+
+.heading h1{
+    font-size:34px;
+    margin:8px 0;
+}
+
+.heading p{
+    color:#858590;
+}
+
+.list{
+    display:grid;
+    gap:13px;
+}
+
+.list-item{
+    background:#fff;
+    border:1px solid #e8e8ef;
+    border-radius:18px;
+    padding:18px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.list-item .info{
+    flex:1;
+}
+
+.info span{
+    display:block;
+    color:#858590;
+    font-size:12px;
+    margin-top:4px;
+}
+
+.large-modes{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.large-mode{
+    min-height:210px;
+    border-radius:23px;
+    padding:25px;
+    text-align:left;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:8px;
+}
+
+.large-mode span{
+    font-size:35px;
+}
+
+.large-mode strong{
+    font-size:20px;
+}
+
+.large-mode small{
+    color:#858590;
+}
+
+/* AI */
+
+.ai{
+    background:#fff;
+    border:1px solid #e8e8ef;
+    border-radius:23px;
+    padding:25px;
+    min-height:430px;
+    display:flex;
+    flex-direction:column;
+}
+
+.ai-top{
+    display:flex;
+    gap:12px;
+}
+
+.messages{
+    flex:1;
+    padding:20px 0;
+}
+
+.message{
+    padding:11px 14px;
+    border-radius:14px;
+    margin:8px 0;
+    max-width:75%;
+}
+
+.user{
+    background:#7357e8;
+    color:#fff;
+    margin-left:auto;
+}
+
+.bot{
+    background:#f0f0f4;
+}
+
+.chat{
+    display:flex;
+    gap:10px;
+}
+
+.chat input{
+    flex:1;
+    border:1px solid #dddde5;
+    border-radius:12px;
+    padding:13px;
+    outline:none;
+}
+
+.chat button{
+    background:#7357e8;
+    color:#fff;
+    border-radius:12px;
+    padding:0 20px;
+}
+
+/* SETTINGS */
+
+.setting{
+    background:#fff;
+    border:1px solid #e8e8ef;
+    border-radius:18px;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:13px;
+}
+
+.setting p{
+    color:#858590;
+    font-size:13px;
+    margin-top:5px;
+}
+
+/* SWITCH */
+
+.switch input{
+    display:none;
+}
+
+.switch span{
+    width:48px;
+    height:27px;
+    background:#ddd;
+    display:block;
+    border-radius:20px;
+    position:relative;
+}
+
+.switch span:after{
+    content:"";
+    width:21px;
+    height:21px;
+    background:#fff;
+    border-radius:50%;
+    position:absolute;
+    top:3px;
+    left:3px;
+    transition:.2s;
+}
+
+.switch input:checked + span{
+    background:#7357e8;
+}
+
+.switch input:checked + span:after{
+    transform:translateX(21px);
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(15,15,20,.45);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    visibility:hidden;
+    transition:.2s;
+    z-index:1000;
+    padding:20px;
+}
+
+.modal.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.modal-box{
+    background:#fff;
+    width:min(430px,100%);
+    border-radius:23px;
+    padding:30px;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    top:14px;
+    right:14px;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:#f2f2f5;
+    font-size:22px;
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    background:#18181d;
+    color:#fff;
+    padding:13px 18px;
+    border-radius:13px;
+    transform:translateY(100px);
+    opacity:0;
+    transition:.3s;
+    z-index:2000;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+/* DARK */
+
+body.dark{
+    background:#111116;
+    color:#fff;
+}
+
+body.dark .sidebar,
+body.dark .search,
+body.dark .icon-button,
+body.dark .card,
+body.dark .add,
+body.dark .list-item,
+body.dark .ai,
+body.dark .setting,
+body.dark .modal-box{
+    background:#1b1b22;
+    border-color:#2b2b34;
+}
+
+body.dark .hero{
+    background:#1b1b22;
+    border-color:#2b2b34;
+}
+
+body.dark .search input{
+    color:#fff;
+}
+
+/* MOBILE */
+
+@media(max-width:1100px){
+
+    .devices,
+    .mode-grid,
+    .large-modes{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:750px){
+
+    .sidebar{
+        width:70px;
+        padding:20px 8px;
+    }
+
+    .logo strong,
+    .logo span,
+    .nav button b{
+        display:none;
+    }
+
+    .logo{
+        justify-content:center;
+    }
+
+    .nav button{
+        justify-content:center;
+    }
+
+    .main{
+        margin-left:70px;
+        width:calc(100% - 70px);
+        padding:0 15px 30px;
+    }
+
+    .profile-text{
+        display:none;
+    }
+
+    .hero{
+        padding:25px;
+    }
+
+    .hero h1{
+        font-size:28px;
+    }
+
+    .hero-symbol{
+        width:70px;
+        height:70px;
+        font-size:30px;
+    }
+
+    .devices,
+    .mode-grid,
+    .large-modes{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            M
+        </div>
+
+        <div>
+            <strong>My Tech</strong>
+            <span>HUB</span>
+        </div>
+
+    </div>
+
+
+    <nav class="nav">
+
+        <button class="active" data-page="home">
+            <span>⌂</span>
+            <b>Ana Sayfa</b>
+        </button>
+
+        <button data-page="devices">
+            <span>▣</span>
+            <b>Cihazlar</b>
+        </button>
+
+        <button data-page="modes">
+            <span>◇</span>
+            <b>Modlar</b>
+        </button>
+
+        <button data-page="ai">
+            <span>✦</span>
+            <b>AI Asistan</b>
+        </button>
+
+    </nav>
+
+
+    <div class="bottom">
+
+        <button
+            class="nav"
+            style="width:100%;">
+
+            <button data-page="settings">
+                <span>⚙</span>
+                <b>Ayarlar</b>
+            </button>
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+<header class="top">
+
+    <div class="search">
+
+        <span>⌕</span>
+
+        <input
+            id="search"
+            placeholder="Cihaz, mod veya özellik ara..."
+        >
+
+    </div>
+
+
+    <button
+        class="icon-button"
+        id="notifications">
+
+        ♢
+
+    </button>
+
+
+    <button
+        class="profile"
+        id="profile">
+
+        <div class="avatar">
+            M
+        </div>
+
+        <div>
+            <strong>My Profile</strong>
+            <small>Yönetici</small>
+        </div>
+
+    </button>
+
+</header>
+
+
+<!-- HOME -->
+
+<section
+    class="page active"
+    id="home">
+
+
+<div class="hero">
+
+    <div>
+
+        <span class="eyebrow">
+            MY TECH HUB
+        </span>
+
+        <h1>
+            Her şey kontrolünde.
+        </h1>
+
+        <p>
+            Cihazlarını, ışıklarını ve modlarını
+            tek bir yerden yönet.
+        </p>
+
+    </div>
+
+
+    <div class="hero-symbol">
+        ✦
+    </div>
+
+</div>
+
+
+<div class="section">
+
+    <div>
+        <h2>Hızlı Modlar</h2>
+        <p>Tek dokunuşla ortamını değiştir.</p>
+    </div>
+
+    <button
+        class="link"
+        data-page="modes">
+
+        Tümünü gör →
+
+    </button>
+
+</div>
+
+
+<div class="mode-grid">
+
+
+<button
+    class="mode gaming"
+    data-mode="Gaming">
+
+    <div class="mode-icon">
+        🎮
+    </div>
+
+    <div>
+        <strong>Gaming</strong>
+        <small>Oyun zamanı</small>
+    </div>
+
+</button>
+
+
+<button
+    class="mode movie"
+    data-mode="Film">
+
+    <div class="mode-icon">
+        🎬
+    </div>
+
+    <div>
+        <strong>Film</strong>
+        <small>Sinema atmosferi</small>
+    </div>
+
+</button>
+
+
+<button
+    class="mode sleep"
+    data-mode="Uyku">
+
+    <div class="mode-icon">
+        🌙
+    </div>
+
+    <div>
+        <strong>Uyku</strong>
+        <small>Gece modu</small>
+    </div>
+
+</button>
+
+
+<button
+    class="mode new"
+    id="newMode">
+
+    <div class="mode-icon">
+        ＋
+    </div>
+
+    <div>
+        <strong>Yeni Mod</strong>
+        <small>Mod oluştur</small>
+    </div>
+
+</button>
+
+</div>
+
+
+<div class="section">
+
+    <div>
+        <h2>Cihazların</h2>
+        <p>Bağlı cihazlarını kontrol et.</p>
+    </div>
+
+    <button
+        class="link"
+        data-page="devices">
+
+        Tüm cihazlar →
+
+    </button>
+
+</div>
+
+
+<div class="devices">
+
+
+<!-- PS4 -->
+
+<div class="card">
+
+    <div class="device-top">
+
+        <div class="device-icon ps4">
+            🎮
+        </div>
+
+        <span class="status">
+            ● Hazır
+        </span>
+
+    </div>
+
+    <h3>PlayStation 4</h3>
+
+    <p>Oyun konsolu</p>
+
+
+    <div class="actions">
+
+        <button
+            class="primary device"
+            data-device="PS4"
+            data-action="Aç / Uyandır">
+
+            Aç / Uyandır
+
+        </button>
+
+        <button
+            class="secondary device"
+            data-device="PS4"
+            data-action="Dinlenme">
+
+            Dinlenme
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- WIZ -->
+
+<div class="card">
+
+    <div class="device-top">
+
+        <div class="device-icon wiz">
+            💡
+        </div>
+
+        <button
+            class="power device"
+            data-device="WiZ"
+            data-action="Aç / Kapat">
+
+            ⏻
+
+        </button>
+
+    </div>
+
+    <h3>WiZ Işık</h3>
+
+    <p>Akıllı ampul</p>
+
+
+    <div class="brightness-title">
+
+        <span>Parlaklık</span>
+
+        <strong id="wizValue">
+            80%
+        </strong>
+
+    </div>
+
+    <input
+        class="range"
+        id="wizRange"
+        type="range"
+        min="0"
+        max="100"
+        value="80"
+    >
+
+
+    <div class="colors">
+
+        <button
+            class="color red"
+            data-light="WiZ"
+            data-color="Kırmızı">
+        </button>
+
+        <button
+            class="color blue"
+            data-light="WiZ"
+            data-color="Mavi">
+        </button>
+
+        <button
+            class="color purple"
+            data-light="WiZ"
+            data-color="Mor">
+        </button>
+
+        <button
+            class="color green"
+            data-light="WiZ"
+            data-color="Yeşil">
+        </button>
+
+        <button
+            class="color white"
+            data-light="WiZ"
+            data-color="Beyaz">
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- GOVEE -->
+
+<div class="card">
+
+    <div class="device-top">
+
+        <div class="device-icon govee">
+            ◉
+        </div>
+
+        <button
+            class="power device"
+            data-device="Govee"
+            data-action="Aç / Kapat">
+
+            ⏻
+
+        </button>
+
+    </div>
+
+    <h3>Govee Light Strip</h3>
+
+    <p>LED ışık şeridi</p>
+
+
+    <div class="brightness-title">
+
+        <span>Parlaklık</span>
+
+        <strong id="goveeValue">
+            65%
+        </strong>
+
+    </div>
+
+    <input
+        class="range"
+        id="goveeRange"
+        type="range"
+        min="0"
+        max="100"
+        value="65"
+    >
+
+
+    <div class="colors">
+
+        <button
+            class="color red"
+            data-light="Govee"
+            data-color="Kırmızı">
+        </button>
+
+        <button
+            class="color blue"
+            data-light="Govee"
+            data-color="Mavi">
+        </button>
+
+        <button
+            class="color purple"
+            data-light="Govee"
+            data-color="Mor">
+        </button>
+
+        <button
+            class="color green"
+            data-light="Govee"
+            data-color="Yeşil">
+        </button>
+
+        <button
+            class="color white"
+            data-light="Govee"
+            data-color="Beyaz">
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ADD -->
+
+<button
+    class="add"
+    id="addDevice">
+
+    <div>
+        ＋
+    </div>
+
+    <strong>
+        Cihaz Ekle
+    </strong>
+
+    <span>
+        Yeni bir cihaz bağla
+    </span>
+
+</button>
+
+
+</div>
+
+</section>
+
+
+<!-- DEVICES PAGE -->
+
+<section
+    class="page"
+    id="devices">
+
+    <div class="heading">
+
+        <span class="eyebrow">
+            CİHAZLAR
+        </span>
+
+        <h1>
+            Cihazların
+        </h1>
+
+        <p>
+            Tüm cihazlarını buradan yönet.
+        </p>
+
+    </div>
+
+
+    <div class="list">
+
+        <div class="list-item">
+
+            <div class="device-icon ps4">
+                🎮
+            </div>
+
+            <div class="info">
+                <strong>PlayStation 4</strong>
+                <span>Oyun konsolu</span>
+            </div>
+
+            <button
+                class="secondary device"
+                data-device="PS4"
+                data-action="Uyandır">
+
+                Uyandır
+
+            </button>
+
+        </div>
+
+
+        <div class="list-item">
+
+            <div class="device-icon wiz">
+                💡
+            </div>
+
+            <div class="info">
+                <strong>WiZ Işık</strong>
+                <span>Akıllı ampul</span>
+            </div>
+
+            <button
+                class="secondary device"
+                data-device="WiZ"
+                data-action="Aç / Kapat">
+
+                Aç / Kapat
+
+            </button>
+
+        </div>
+
+
+        <div class="list-item">
+
+            <div class="device-icon govee">
+                ◉
+            </div>
+
+            <div class="info">
+                <strong>Govee Light Strip</strong>
+                <span>LED ışık şeridi</span>
+            </div>
+
+            <button
+                class="secondary device"
+                data-device="Govee"
+                data-action="Aç / Kapat">
+
+                Aç / Kapat
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MODES PAGE -->
+
+<section
+    class="page"
+    id="modes">
+
+    <div class="heading">
+
+        <span class="eyebrow">
+            MODLAR
+        </span>
+
+        <h1>
+            Modların
+        </h1>
+
+        <p>
+            Cihazlarını tek dokunuşla yönet.
+        </p>
+
+    </div>
+
+
+    <div class="large-modes">
+
+        <button
+            class="large-mode gaming"
+            data-mode="Gaming">
+
+            <span>🎮</span>
+
+            <strong>Gaming</strong>
+
+            <small>
+                Oyun atmosferini başlat
+            </small>
+
+        </button>
+
+
+        <button
+            class="large-mode movie"
+            data-mode="Film">
+
+            <span>🎬</span>
+
+            <strong>Film</strong>
+
+            <small>
+                Film atmosferini başlat
+            </small>
+
+        </button>
+
+
+        <button
+            class="large-mode sleep"
+            data-mode="Uyku">
+
+            <span>🌙</span>
+
+            <strong>Uyku</strong>
+
+            <small>
+                Gece atmosferini başlat
+            </small>
+
+        </button>
+
+
+        <button
+            class="large-mode new"
+            id="newMode2">
+
+            <span>＋</span>
+
+            <strong>Yeni Mod</strong>
+
+            <small>
+                Kendi modunu oluştur
+            </small>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- AI -->
+
+<section
+    class="page"
+    id="ai">
+
+    <div class="heading">
+
+        <span class="eyebrow">
+            AI ASİSTAN
+        </span>
+
+        <h1>
+            AI Asistan
+        </h1>
+
+        <p>
+            Cihazlarını doğal dille yönet.
+        </p>
+
+    </div>
+
+
+    <div class="ai">
+
+        <div class="ai-top">
+
+            <div class="avatar">
+                ✦
+            </div>
+
+            <div>
+
+                <strong>
+                    My Tech AI
+                </strong>
+
+                <p>
+                    Merhaba! Cihazlarını yönetmene
+                    yardımcı olabilirim.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="messages"
+            id="messages">
+        </div>
+
+
+        <div class="chat">
+
+            <input
+                id="aiInput"
+                placeholder="Bir şey yaz..."
+            >
+
+            <button id="sendAI">
+                Gönder
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SETTINGS -->
+
+<section
+    class="page"
+    id="settings">
+
+    <div class="heading">
+
+        <span class="eyebrow">
+            AYARLAR
+        </span>
+
+        <h1>
+            Ayarlar
+        </h1>
+
+        <p>
+            My Tech HUB ayarlarını yönet.
+        </p>
+
+    </div>
+
+
+    <div class="setting">
+
+        <div>
+
+            <strong>
+                Bildirimler
+            </strong>
+
+            <p>
+                Cihaz durumlarını bildir.
+            </p>
+
+        </div>
+
+        <label class="switch">
+
+            <input type="checkbox" checked>
+
+            <span></span>
+
+        </label>
+
+    </div>
+
+
+    <div class="setting">
+
+        <div>
+
+            <strong>
+                Karanlık mod
+            </strong>
+
+            <p>
+                Arayüz temasını değiştir.
+            </p>
+
+        </div>
+
+        <label class="switch">
+
+            <input
+                type="checkbox"
+                id="darkMode">
+
+            <span></span>
+
+        </label>
+
+    </div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<!-- MODAL -->
+
+<div
+    class="modal"
+    id="modal">
+
+    <div class="modal-box">
+
+        <button
+            class="close"
+            id="closeModal">
+
+            ×
+
+        </button>
+
+        <div id="modalContent"></div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+    class="toast"
+    id="toast">
+
+    ✓
+    <span id="toastText">
+        İşlem tamamlandı.
+    </span>
+
+</div>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    console.log("My Tech HUB JavaScript çalışıyor");
+
+
+    /* SAYFALAR */
+
+    const pages =
+        document.querySelectorAll(".page");
+
+    const nav =
+        document.querySelectorAll(".nav button[data-page]");
+
+
+    function openPage(name){
+
+        pages.forEach(function(page){
+
+            page.classList.remove("active");
+
+        });
+
+
+        const page =
+            document.getElementById(name);
+
+        if(page){
+            page.classList.add("active");
+        }
+
+
+        nav.forEach(function(button){
+
+            button.classList.remove("active");
+
+            if(button.dataset.page === name){
+
+                button.classList.add("active");
+
+            }
+
+        });
+
+    }
+
+
+    document
+        .querySelectorAll("[data-page]")
+        .forEach(function(button){
+
+            button.addEventListener("click",function(){
+
+                openPage(
+                    this.dataset.page
+                );
+
+            });
+
+        });
+
+
+    /* TOAST */
+
+    const toast =
+        document.getElementById("toast");
+
+    const toastText =
+        document.getElementById("toastText");
+
+
+    function showToast(text){
+
+        toastText.textContent = text;
+
+        toast.classList.add("show");
+
+        clearTimeout(window.toastTimer);
+
+        window.toastTimer =
+            setTimeout(function(){
+
+                toast.classList.remove("show");
+
+            },2200);
+
+    }
+
+
+    /* DEVICE BUTTONS */
+
+    document
+        .querySelectorAll(".device")
+        .forEach(function(button){
+
+            button.addEventListener("click",function(){
+
+                showToast(
+                    this.dataset.device +
+                    " → " +
+                    this.dataset.action
+                );
+
+            });
+
+        });
+
+
+    /* COLORS */
+
+    document
+        .querySelectorAll(".color")
+        .forEach(function(button){
+
+            button.addEventListener("click",function(){
+
+                const light =
+                    this.dataset.light;
+
+                document
+                    .querySelectorAll(
+                        '.color[data-light="' +
+                        light +
+                        '"]'
+                    )
+                    .forEach(function(item){
+
+                        item.classList.remove(
+                            "selected"
+                        );
+
+                    });
+
+
+                this.classList.add("selected");
+
+
+                showToast(
+                    light +
+                    " → " +
+                    this.dataset.color
+                );
+
+            });
+
+        });
+
+
+    /* BRIGHTNESS */
+
+    const wiz =
+        document.getElementById("wizRange");
+
+    const wizValue =
+        document.getElementById("wizValue");
+
+
+    wiz.addEventListener("input",function(){
+
+        wizValue.textContent =
+            this.value + "%";
+
+    });
+
+
+    const govee =
+        document.getElementById("goveeRange");
+
+    const goveeValue =
+        document.getElementById("goveeValue");
+
+
+    govee.addEventListener("input",function(){
+
+        goveeValue.textContent =
+            this.value + "%";
+
+    });
+
+
+    /* MODES */
+
+    document
+        .querySelectorAll("[data-mode]")
+        .forEach(function(button){
+
+            button.addEventListener("click",function(){
+
+                showToast(
+                    this.dataset.mode +
+                    " modu seçildi"
+                );
+
+            });
+
+        });
+
+
+    /* NEW MODE */
+
+    function newMode(){
+
+        openModal(`
+
+            <h2>Yeni Mod</h2>
+
+            <p style="margin-top:8px;color:#858590">
+                Yeni modunun adını yaz.
+            </p>
+
+            <input
+                id="modeName"
+                placeholder="Örn. Ders"
+                style="
+                    width:100%;
+                    margin-top:18px;
+                    padding:13px;
+                    border:1px solid #ddd;
+                    border-radius:12px;
+                    outline:none;
+                "
+            >
+
+            <button
+                id="saveMode"
+                class="primary"
+                style="
+                    width:100%;
+                    margin-top:12px;
+                ">
+
+                Modu Oluştur
+
+            </button>
+
+        `);
+
+
+        document
+            .getElementById("saveMode")
+            .addEventListener("click",function(){
+
+                const name =
+                    document
+                        .getElementById("modeName")
+                        .value
+                        .trim();
+
+
+                if(!name){
+
+                    showToast(
+                        "Mod adı yazmalısın."
+                    );
+
+                    return;
+
+                }
+
+
+                closeModal();
+
+                showToast(
+                    name +
+                    " modu oluşturuldu."
+                );
+
+            });
+
+    }
+
+
+    document
+        .getElementById("newMode")
+        .addEventListener(
+            "click",
+            newMode
+        );
+
+
+    document
+        .getElementById("newMode2")
+        .addEventListener(
+            "click",
+            newMode
+        );
+
+
+    /* DEVICE ADD */
+
+    function addDevice(){
+
+        openModal(`
+
+            <h2>Cihaz Ekle</h2>
+
+            <p style="margin-top:8px;color:#858590">
+                Bir cihaz seç.
+            </p>
+
+            <button
+                class="modal-option"
+                data-add="PlayStation 4">
+
+                🎮
+                <strong>PlayStation 4</strong>
+
+            </button>
+
+            <button
+                class="modal-option"
+                data-add="WiZ">
+
+                💡
+                <strong>WiZ</strong>
+
+            </button>
+
+            <button
+                class="modal-option"
+                data-add="Govee">
+
+                ◉
+                <strong>Govee</strong>
+
+            </button>
+
+        `);
+
+
+        document
+            .querySelectorAll("[data-add]")
+            .forEach(function(button){
+
+                button.addEventListener(
+                    "click",
+                    function(){
+
+                        closeModal();
+
+                        showToast(
+                            this.dataset.add +
+                            " seçildi."
+                        );
+
+                    }
+                );
+
+            });
+
+    }
+
+
+    document
+        .getElementById("addDevice")
+        .addEventListener(
+            "click",
+            addDevice
+        );
+
+
+    /* MODAL */
+
+    const modal =
+        document.getElementById("modal");
+
+    const modalContent =
+        document.getElementById(
+            "modalContent"
+        );
+
+
+    function openModal(content){
+
+        modalContent.innerHTML =
+            content;
+
+        modal.classList.add("show");
+
+    }
+
+
+    function closeModal(){
+
+        modal.classList.remove("show");
+
+    }
+
+
+    document
+        .getElementById("closeModal")
+        .addEventListener(
+            "click",
+            closeModal
+        );
+
+
+    modal.addEventListener(
+        "click",
+        function(event){
+
+            if(event.target === modal){
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+    /* AI */
+
+    const aiInput =
+        document.getElementById("aiInput");
+
+    const sendAI =
+        document.getElementById("sendAI");
+
+    const messages =
+        document.getElementById("messages");
+
+
+    function sendMessage(){
+
+        const text =
+            aiInput.value.trim();
+
+
+        if(!text){
+            return;
+        }
+
+
+        const user =
+            document.createElement("div");
+
+        user.className =
+            "message user";
+
+        user.textContent =
+            text;
+
+        messages.appendChild(user);
+
+
+        aiInput.value = "";
+
+
+        setTimeout(function(){
+
+            const bot =
+                document.createElement("div");
+
+            bot.className =
+                "message bot";
+
+            bot.textContent =
+                "AI bağlantısı sonraki aşamada eklenecek.";
+
+            messages.appendChild(bot);
+
+        },400);
+
+    }
+
+
+    sendAI.addEventListener(
+        "click",
+        sendMessage
+    );
+
+
+    aiInput.addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Enter"){
+
+                sendMessage();
+
+            }
+
+        }
+    );
+
+
+    /* DARK MODE */
+
+    document
+        .getElementById("darkMode")
+        .addEventListener(
+            "change",
+            function(){
+
+                document.body.classList.toggle(
+                    "dark",
+                    this.checked
+                );
+
+            }
+        );
+
+
+    /* NOTIFICATION */
+
+    document
+        .getElementById("notifications")
+        .addEventListener(
+            "click",
+            function(){
+
+                openModal(`
+
+                    <h2>Bildirimler</h2>
+
+                    <p style="margin-top:10px">
+                        Yeni bildirimin yok.
+                    </p>
+
+                `);
+
+            }
+        );
+
+
+    /* PROFILE */
+
+    document
+        .getElementById("profile")
+        .addEventListener(
+            "click",
+            function(){
+
+                openModal(`
+
+                    <h2>My Profile</h2>
+
+                    <p style="margin-top:10px">
+                        Yönetici hesabı
+                    </p>
+
+                `);
+
+            }
+        );
+
+
+    /* SEARCH */
+
+    document
+        .getElementById("search")
+        .addEventListener(
+            "keydown",
+            function(event){
+
+                if(event.key !== "Enter"){
+                    return;
+                }
+
+
+                const text =
+                    this.value.toLowerCase();
+
+
+                if(text.includes("ps4") ||
+                   text.includes("playstation")){
+
+                    openPage("devices");
+
+                }
+
+                else if(text.includes("wiz") ||
+                        text.includes("ışık")){
+
+                    openPage("devices");
+
+                }
+
+                else if(text.includes("govee")){
+
+                    openPage("devices");
+
+                }
+
+                else if(text.includes("mod")){
+
+                    openPage("modes");
+
+                }
+
+                else if(text.includes("ai")){
+
+                    openPage("ai");
+
+                }
+
+                else{
+
+                    showToast(
+                        "Sonuç bulunamadı."
+                    );
+
+                }
+
+            }
+        );
+
+});
+
+</script>
+
+</body>
+</html>
